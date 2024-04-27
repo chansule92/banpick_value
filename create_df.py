@@ -25,7 +25,10 @@ for game in game_list_df['Game_ID'].values:
                 if len(df[(df['Champion']==k)&(df['con_champ']==i)]['Duo_Score']) == 0:
                     pass
                 else:
-                    Duo_score = Duo_score + float(df[(df['Champion']==k)&(df['con_champ']==i)]['Duo_Score'].iloc[0])
+                    try:
+                        Duo_score = Duo_score + float(df[(df['Champion']==k)&(df['con_champ']==i)]['Duo_Score'].iloc[0])
+                    except IndexError:
+                        Duo_score = 0
         for j in Red_Team:
             if k==j:
                 pass
@@ -33,7 +36,10 @@ for game in game_list_df['Game_ID'].values:
                 if len(df[(df['Champion']==k)&(df['con_champ']==j)]['Count_Score']) == 0:
                     pass
                 else:
-                    Count_score = Count_score+ float(df[(df['Champion']==k)&(df['con_champ']==j)]['Count_Score'].iloc[0])
+                    try:
+                        Count_score = Count_score+ float(df[(df['Champion']==k)&(df['con_champ']==j)]['Count_Score'].iloc[0])
+                    except IndexError:
+                        Count_score = 0
         temp_list.append([Ban,Pick,Win_rate,round(Duo_score,2),round(Count_score,2)])
     sum1=0
     sum2=0
@@ -70,7 +76,10 @@ for game in game_list_df['Game_ID'].values:
                 if len(df[(df['Champion']==k)&(df['con_champ']==i)]['Duo_Score']) == 0:
                     pass
                 else:
-                    Duo_score = Duo_score + float(df[(df['Champion']==k)&(df['con_champ']==i)]['Duo_Score'].iloc[0])
+                    try:
+                        Duo_score = Duo_score + float(df[(df['Champion']==k)&(df['con_champ']==i)]['Duo_Score'].iloc[0])
+                    except IndexError:
+                        Duo_score = 0
         for j in Blue_Team:
             if k==j:
                 pass
@@ -78,7 +87,10 @@ for game in game_list_df['Game_ID'].values:
                 if len(df[(df['Champion']==k)&(df['con_champ']==j)]['Count_Score']) == 0:
                     pass
                 else:
-                    Count_score = Count_score+ float(df[(df['Champion']==k)&(df['con_champ']==j)]['Count_Score'].iloc[0])
+                    try:
+                        Count_score = Count_score+ float(df[(df['Champion']==k)&(df['con_champ']==j)]['Count_Score'].iloc[0])
+                    except IndexError:
+                        Count_score = 0
         temp_list.append([Ban,Pick,Win_rate,round(Duo_score,2),round(Count_score,2)])
     sum1=0
     sum2=0
