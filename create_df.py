@@ -108,7 +108,11 @@ for game in game_list_df['Game_ID'].values:
     final_list.append(sum3)
     final_list.append(sum4)
     final_list.append(sum5)
-    final_list.append(result[game]['BLUE'][1])
+    if result[game]['BLUE'][1] == 'WIN':
+        final_list.append(1)
+    else :
+        final_list.append(0)
+    df_list.append(final_list)
     df_list.append(final_list)
 ml_df=pd.DataFrame(df_list)
 ml_df.columns=['Blue_Ban','Blue_Pick','Blue_rate','Blue_Duo_Score','Blue_Count_Score','Red_Ban','Red_Pick','Red_rate','Red_Duo_Score','Red_Count_Score','Blue_Result']                                                                                                                                                                                
